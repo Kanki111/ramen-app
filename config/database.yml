@@ -60,7 +60,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: <%= ENV['postgresql-slippery-33328'] %>
+  database: ramen_app_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -83,4 +83,6 @@ test:
 #
 production:
   <<: *default
-      url: <%= ENV['postgres://jaxupqtmofjmle:32e05567d32d428b2b3806d031bed42fb8ce51141d07f6996fae86c4b3a8bb5f@ec2-52-72-34-184.compute-1.amazonaws.com:5432/dngrml030443b'] %>
+  database: ramen_app_production
+  username: postgres
+  password: <%= ENV['RAMEN_APP_DATABASE_PASSWORD'] %>
