@@ -17,9 +17,7 @@ Rails.application.routes.draw do
     post "ramen_member/new" => "member#create"
     get "ramen_member/show" => "member#show"
     resources :comments, only: [:create]
-    resources :posts do
-      resources :comments, only: [:create]
-    end
+    resources :posts 
   end
 
   namespace :manager do
