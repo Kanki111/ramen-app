@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  root  'users#index'
+  
   namespace :member_posts do
     resources :comments
     post "comment" => "member_post_comment"
