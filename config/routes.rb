@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root "sessions#new"
+  root "member/sessions#new"
 
   namespace :member_posts do
     resources :comments
