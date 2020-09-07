@@ -61,13 +61,4 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.web_console.whitelisted_ips = [ "172.16.0.0/12" ]
-  module SubTaskApp
-    class Application < Rails::Application
-      # Initialize configuration defaults for originally generated Rails version.
-      config.load_defaults 5.2
-      unless Rails.env.production?
-      config.web_console.whitelisted_ips = '0.0.0.0/0'
-      end
-    end
-  end
 end
