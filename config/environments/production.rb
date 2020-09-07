@@ -115,5 +115,4 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
   config.hosts << "localhost"
   config.hosts << "ramen-app-main.herokuapp.com"
-  config.web_console.whitelisted_ips = [ "ramen-app-main.herokuapp.com" ]
 end
