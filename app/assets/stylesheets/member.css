@@ -1,3 +1,7 @@
 /*
  *= require_tree ./member
  */
+
+ .tag a{
+    color: #ffffff;
+}
