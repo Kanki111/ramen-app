@@ -1,15 +1,14 @@
 Rails.application.routes.draw do
 
   root "member/sessions#new"
-  root "sessions#new"
-  get "images/index" => "images#index"
-  get "login" => "sessions#new", as: :login
-  post "session" => "sessions#create", as: :session
-  delete "session" => "sessions#destroy"
+  get "member/images/index" => "images#index"
+  get "login" => "member/sessions#new", as: :login
+  post "session" => "member/sessions#create", as: :session
+  delete "session" => "member/sessions#destroy"
   resource :password, only: [ :show, :edit, :update]
-  get "ramen_member/new" => "member#new"
-  post "ramen_member/new" => "member#create"
-  get "ramen_member/show" => "member#show"
+  get "member/ramen_member/new" => "member/member#new"
+  post "member/ramen_member/new" => "member/member#create"
+  get "member/ramen_member/show" => "member/member#show"
   resources :comments, only: [:create]
   resources :posts do
     resources :comments, only: [:create]
