@@ -52637,3 +52637,4 @@ Completed 200 OK in 95ms (Views: 91.0ms | ActiveRecord: 0.5ms | Allocations: 499
 
 DEPRECATION WARNING: The config.web_console.whitelisted_ips is deprecated and will be ignored in future release of web_console. Please use config.web_console.allowed_ips instead. (called from <main> at /Users/matsuzakikanki/Desktop/ramen_app/config/environment.rb:5)
 DEPRECATION WARNING: The config.web_console.whitelisted_ips is deprecated and will be ignored in future release of web_console. Please use config.web_console.allowed_ips instead. (called from <main> at /Users/matsuzakikanki/Desktop/ramen_app/config/environment.rb:5)
+DEPRECATION WARNING: The config.web_console.whitelisted_ips is deprecated and will be ignored in future release of web_console. Please use config.web_console.allowed_ips instead. (called from <main> at /Users/matsuzakikanki/Desktop/ramen_app/config/environment.rb:5)
