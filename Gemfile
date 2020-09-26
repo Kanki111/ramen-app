@@ -21,6 +21,7 @@ gem "rails-i18n"
 gem "date_validator"
 gem "valid_email2"
 gem "nokogiri"
+gem "aws-sdk-s3", require: false
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
