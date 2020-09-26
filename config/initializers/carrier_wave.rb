@@ -6,7 +6,7 @@ if Rails.env.production?
         :provider              => 'AWS',
         :region                => ENV['ap-northeast-1'],
         :aws_access_key_id     => ENV['AKIA54NMMBXYUJPIEM67'],
-        :aws_secret_access_key => ENV['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']
+        :aws_secret_access_key => ENV['QAwu0CA2xMPpWqdah2m2zjKeQUTNh5d37ZER/vje']
       }
       config.fog_directory     =  ENV['ramen-app-image']
       # キャッシュの保存期間
