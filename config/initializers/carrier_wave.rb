@@ -5,10 +5,10 @@ if Rails.env.production?
         # Amazon S3用の設定
         :provider              => 'AWS',
         :region                => ENV['ap-northeast-1'],
-        :aws_access_key_id     => ENV['AKIA54NMMBXYUJPIEM67'],
-        :aws_secret_access_key => ENV['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']
+        :aws_access_key_id     => ENV['AKIA54NMMBXYVN2SN2GO'],
+        :aws_secret_access_key => ENV['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']
       }
-      config.fog_directory     =  ENV['ramen-app-image']
+      config.fog_directory     =  ENV['image-ramen-app-main']
       # キャッシュの保存期間
       config.fog_attributes = { 'Cache-Control' => "max-age=#{365.day.to_i}" }
     end
