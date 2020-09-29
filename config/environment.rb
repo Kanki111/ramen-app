@@ -2,4 +2,4 @@
 require_relative 'application'
 
 # Initialize the Rails application.
-RamenAppMain::Application.initialize!
+rame-app-main::Application.initialize!
