@@ -12,6 +12,6 @@ CarrierWave.configure do |config|
     region: 'ap-northeast-1' 
   }
 
-  config.fog_directory = 'https://image-ramen-app-main.s3.amazonaws.com'
-  config.asset_host = 'https://image-ramen-app-main.s3.amazonaws.com'
+  config.fog_directory  = 'image-ramen-app-main'
+  config.asset_host = 'https://s3-ap-northeast1.amazonaws.com/image-ramen-app-main'
 end
