@@ -12,7 +12,6 @@
       <th>Type</th>
       <th>SHOW</th>
       <th>EDIT</th>
-      # <th>DESTROY</th>
     </tr>
   </thead>
 
@@ -25,7 +24,7 @@
         <td><%= member_post.ramen_type %></td>
         <td><%= link_to '詳細', member_post %></td>
         <td><%= link_to '編集', edit_member_post_path(member_post) %></td>
-        # <td><%= link_to '削除', member_post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '削除', member_post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
