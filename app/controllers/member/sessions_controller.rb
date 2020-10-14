@@ -18,9 +18,11 @@ class Member::SessionsController < Member::Base
             session[:ramen_member_id] = ramen_member.id
             flash.notice = "こんにちは #{login_member_now.name}さん"
             redirect_to :member_images_index
-        else
+        elsif !ramen_member
             flash.now.alert = "メールアドレスまたはパスワードが違います。"
             render action: "new"
+        else
+            flash.notice = "テストログインです"
         end
     end
 
