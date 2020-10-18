@@ -7,6 +7,7 @@
     <% @member_posts.each do |member_post| %>
         <div class="images_image"><%= image_tag member_post.image.to_s %>
           <div class="image_title"><%= member_post.title %></div>
+          <div class="image_title"><%= member_post.place %></div>
         </div>
     <% end %>
 </div>
