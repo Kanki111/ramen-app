@@ -26,6 +26,11 @@
     <%=form.label "画像をアップロード" , class: "new_post_label"%><%= form.file_field :image , class: "new_post_image" %>
   </div>
 
+  <div class="field" id="review_star">
+    <%=  form.label :evaluation, "評価" %>
+    <%= form.hidden_field :evaluation %>
+  </div>
+
   <div class="field">
   <%= form.label :追加の画像やコメントなど, class: "form_content_label" %>
   <%= form.rich_text_area :content %>
@@ -35,3 +40,15 @@
     <%= form.submit :投稿をする, class: "new_post_button" %>
   </div>
 <% end %>
+
+
+<script>
+$('#review_star').raty({
+  size :36,
+  starOff: '<%= asset_path('../../../assets/images/star-off.png') %>',
+  starOn: '<%= asset_path('../../../assets/images/star-on.png') %>',
+  starHalf: '<%= asset_path('../../../assets/images/star-half.png') %>',
+  scoreName: 'post[evaluation]',
+  half: true,
+})
+</script>
