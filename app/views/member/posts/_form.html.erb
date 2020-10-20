@@ -40,3 +40,12 @@
     <%= form.submit :投稿をする, class: "new_post_button" %>
   </div>
 <% end %>
+
+<script>
+$('#review_star').raty({
+  size     : 36,
+  starOff:  '<%= asset_path('star-off.png') %>',
+  starOn : '<%= asset_path('star-on.png') %>',
+  scoreName: 'review[star]' 
+});
+</script>
