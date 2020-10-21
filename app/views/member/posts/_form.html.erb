@@ -28,17 +28,7 @@
 
   <div class="field" id="review_star">
     <%=  form.label :evaluation, "評価" %>
-    <div class="stars">
-    <input id="star5" type="radio" name="star" value="5" />
-    <label for="star5">★</label>
-    <input id="star4" type="radio" name="star" value="4" />
-    <label for="star4">★</label>
-    <input id="star3" type="radio" name="star" value="3" />
-    <label for="star3">★</label>
-    <input id="star2" type="radio" name="star" value="2" />
-    <label for="star2">★</label>
-    <input id="star1" type="radio" name="star" value="1" />
-    <label fo
+    <%= form.hidden_field :evaluation %>
   </div>
 
   <div class="field">
@@ -50,4 +40,3 @@
     <%= form.submit :投稿をする, class: "new_post_button" %>
   </div>
 <% end %>
-
