@@ -28,15 +28,24 @@
 
   <div class="field" id="review_star">
     <%=  form.label :evaluation, "評価" %>
-    <%= form.hidden_field :evaluation %>
+    <%= f.hidden_field :evaluation, id: :review_star %>
   </div>
 
   <div class="field">
-  <%= form.label :追加の画像やコメントなど, class: "form_content_label" %>
-  <%= form.rich_text_area :content %>
-</div>
+    <%= form.label :追加の画像やコメントなど, class: "form_content_label" %>
+    <%= form.rich_text_area :content %>
+  </div>
 
   <div class="actions">
     <%= form.submit :投稿をする, class: "new_post_button" %>
   </div>
 <% end %>
+
+<script>
+$('#star').raty({
+  size     : 36,
+  starOff:  '<%= asset_path('../../../assets/images/star-off.png') %>',
+  starOn : '<%= asset_path('../../../assets/images/star-on.png') %>',
+  scoreName: 'review[star]' 
+});
+</script>
