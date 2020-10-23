@@ -26,16 +26,16 @@
     <%=form.label "画像をアップロード" , class: "new_post_label"%><%= form.file_field :image , class: "new_post_image" %>
   </div>
 
+  <div class="field">
+  <%= form.label :お店のページのURL, class: "form_content_label" %>
+  <%= form.text_field :place %>
+</div>
+
 
   <div class="field">
     <%= form.label :追加の画像やコメントなど, class: "form_content_label" %>
     <%= form.rich_text_area :content %>
   </div>
-
-  <div class="field">
-  <%= form.label :お店のページのURL, class: "form_content_label" %>
-  <%= form.rich_text_area :place %>
-</div>
 
   <div class="actions">
     <%= form.submit :投稿をする, class: "new_post_button" %>
