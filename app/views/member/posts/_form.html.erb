@@ -32,6 +32,11 @@
     <%= form.rich_text_area :content %>
   </div>
 
+  <div class="field">
+  <%= form.label :お店のページのURL, class: "form_content_label" %>
+  <%= form.rich_text_area :place %>
+</div>
+
   <div class="actions">
     <%= form.submit :投稿をする, class: "new_post_button" %>
   </div>
