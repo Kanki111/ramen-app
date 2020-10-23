@@ -9,9 +9,9 @@
         <div class="image_text">
           <div class="image_title"><%= member_post.title %></div>
           <div class="image_title"><%= member_post.place %></div>
-          <div class="twitter" = link_to "https://twitter.com/share?url=#{ request.url }&text=#{ @book.title }を、Twitterでみんなに広めよう！", class: 'btn btn-default', target: '_blank' do
+          <div class="twitter"><a class="twitter" = link_to "https://twitter.com/share?url=#{ request.url }&text=#{ @book.title }を、Twitterでみんなに広めよう！", target: '_blank' do
           i.fab.fa-twitter style='color: #3399FF;'
-          |  Twitterでシェア>ツイッターでこのお店をシェアする</div>
+          |  Twitterでシェア>ツイッターでこのお店をシェアする</a></div>
         </div>
         </div>
     <% end %>
