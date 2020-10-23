@@ -9,9 +9,7 @@
         <div class="image_text">
           <div class="image_title"><%= member_post.title %></div>
           <div class="image_title"><%= member_post.place %></div>
-          <div class="twitter"><a class="twitter" = link_to "https://twitter.com/intent/tweet?text=Hello%20World!!, target: '_blank' do
-          i.fab.fa-twitter 
-          >ツイッターでこのお店をシェアする</a></div>
+          <%= link_to 'Twitter', "https://twitter.com/intent/tweet?text=Hello%20World!!", title: 'Twitter', target: '_blank' %>
         </div>
         </div>
     <% end %>
