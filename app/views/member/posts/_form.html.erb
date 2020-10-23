@@ -26,10 +26,6 @@
     <%=form.label "画像をアップロード" , class: "new_post_label"%><%= form.file_field :image , class: "new_post_image" %>
   </div>
 
-  <div class="field" id="review_star">
-    <%=  form.label :evaluation, "評価" %>
-    <%= f.hidden_field :evaluation, id: :review_star %>
-  </div>
 
   <div class="field">
     <%= form.label :追加の画像やコメントなど, class: "form_content_label" %>
