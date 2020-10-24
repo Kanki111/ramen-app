@@ -94,12 +94,6 @@ a{
     text-decoration: none;
 }
 
-.images_image{
-    width: 32%;
-    height: 200px;
-    display: inline-block;
-}
-
 .images_image img{
     object-fit: cover;
     width: 100%;
@@ -281,4 +275,9 @@ div.field_with_errors {
 .image_text{
     margin-bottom: 8px;
     background-color: #ffffff;
+}
+.images_image{
+    width: 32%;
+    height: 380px;
+    display: inline-block;
 }
