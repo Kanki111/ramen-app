@@ -12,7 +12,7 @@
             <div class="image_text">
                 <div class="image_title"><%= member_post.title %></div>
                 <div class="image_title"><%= member_post.place %></div>
-                <div class="twitter"><%= link_to 'Twitterでこのお店をシェアする', "https://twitter.com/intent/tweet?text=&text=#{ member_post.place }のHello%20World!!&text=#{ member_post.title }", title: 'Twitter', target: '_blank' %></div>
+                <div class="twitter"><%= link_to 'Twitterでこのお店をシェアする', "https://twitter.com/intent/tweet?text=#{ member_post.place }の&text=#{ member_post.title }", title: 'Twitter', target: '_blank' %></div>
             </div>
         </div>
     <% end %>
