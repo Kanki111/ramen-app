@@ -33,18 +33,15 @@
 <div id="map"></div>
 </div>
 </div>
+
 <script>
-    var map;
-    function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: -34.397, lng: 150.644},
-            zoom: 8
-        });
-    }
+var MyLatLng = new google.maps.LatLng(35.6811673, 139.7670516);
+var Options = {
+ zoom: 15,      //地図の縮尺値
+ center: MyLatLng,    //地図の中心座標
+ mapTypeId: 'roadmap'   //地図の種類
+};
+var map = new google.maps.Map(document.getElementById('map'), Options);
 </script>
-var marker = new google.maps.Marker({
-  position: {lat: 35.665498, lng: 139.75964},
-  map: map
-});
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=(AIzaSyAPgjSx3d58VcLBYoj6SKCuKJbnmr__SeM)&callback=initMap"></script>
 <%= render "common/footer" %>
