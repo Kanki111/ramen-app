@@ -17,8 +17,10 @@
 }
 
 .post_table{
+    width: 40%;
     max-width: 1024px;
     margin: 40px auto;
+    display: inline-block;
 
     th{
         border-bottom: dashed 1px #252E33;
@@ -92,6 +94,7 @@ border: solid 1px #EDF2F4;
 
   .show_image{
       width: 50%;
+      display: inline-block;
   }
   .show_image img{
     width: 100%;
