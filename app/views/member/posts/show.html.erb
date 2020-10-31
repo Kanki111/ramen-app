@@ -4,11 +4,13 @@
 <p class="post_subtitle">RECOMEND</p>
 
 <table class="post_table">
+  <thead>
     <tr>
-      <div class="show_image">
+      <th class="show_image">
         <%= image_tag @member_post.image.to_s %>
-      </div>
+      </th>
     </tr>
+  </thead>
   <tbody>
   <tr>
     <td class="show_content">
@@ -39,11 +41,6 @@
             zoom: 8
         });
     }
-
-    var marker = new google.maps.Marker({
-  position: {lat: 35.665498, lng: 139.75964},
-  map: map
-});
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=(AIzaSyAPgjSx3d58VcLBYoj6SKCuKJbnmr__SeM)&callback=initMap"></script>
 <%= render "common/footer" %>
