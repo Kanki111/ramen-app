@@ -34,13 +34,13 @@
 </div>
 </div>
 <script>
-    var map;
-    function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: -34.397, lng: 150.644},
-            zoom: 8
-        });
-    }
+var map;
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: -34.397, lng: 150.644},
+    zoom: 8
+  });
+}
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=(AIzaSyAPgjSx3d58VcLBYoj6SKCuKJbnmr__SeM)&callback=initMap"></script>
 <%= render "common/footer" %>
