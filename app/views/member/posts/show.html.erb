@@ -9,7 +9,7 @@
         <%= image_tag @member_post.image.to_s %>
       </div>
     </tr>
-  <tbody>
+  <div class="show_content">
   <tr>
     <td class="show_content">
       お店の名前：<%= @member_post.title %>
@@ -25,7 +25,7 @@
     コメント：<%= @member_post.content %>
   </td>
 </tr>
-  </tbody>
+  </div>
 </table>
 <hr>
 <div id="map"></div>
