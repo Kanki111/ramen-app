@@ -99,8 +99,12 @@ border: solid 1px #EDF2F4;
 }
 .show_comment{
     display: inline-block;
+    vertical-align: top;
 }
 .show_content{
     border: dashed;
     padding: 16px;
+    border-bottom: 7px;
+    border-right: 0px;
+    border-left: 0px;
 }
