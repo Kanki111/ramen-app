@@ -37,7 +37,11 @@
     <%= form.rich_text_area :content %>
   </div>
 
-  <div id="map"></div>
+  <div class="field">
+    <%= form.label :mapの追加, class: "form_content_label" %>
+    <div id="map"></div>
+  </div>
+
   <div class="actions">
     <%= form.submit :投稿をする, class: "new_post_button" %>
   </div>
