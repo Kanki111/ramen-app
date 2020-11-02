@@ -4,17 +4,15 @@
 <p class="post_subtitle">RECOMEND</p>
 
 <table class="post_table">
-  <thead>
       <div class="show_image">
         <%= image_tag @member_post.image.to_s %>
       </div>
-  </thead>
   <tbody>
-  <tr>
-    <td class="show_content">
+  <div>
+    <p class="show_content">
       お店の名前：<%= @member_post.title %>
-    </td>
-  </tr>
+    </p>
+  </div>
   <tr>
     <td class="show_content">
       お店の場所：<%= @member_post.place %>
