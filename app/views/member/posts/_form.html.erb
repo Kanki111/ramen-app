@@ -37,7 +37,7 @@
     <%= form.rich_text_area :content %>
   </div>
 
-  <div id="map"></div>
+  <div id="map_post"></div>
 </div>
 </div>
 
@@ -47,7 +47,7 @@ let map
 function initMap(){
   geocoder = new google.maps.Geocoder()
 
-  map = new google.maps.Map(document.getElementById('map'), {
+  map = new google.maps.Map(document.getElementById('map_post'), {
     center: {lat: 40.7828, lng:-73.9653},
     zoom: 12,
   });
