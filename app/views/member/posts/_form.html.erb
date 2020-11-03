@@ -50,44 +50,114 @@
   <div class="actions">
     <%= form.submit :投稿をする, class: "new_post_button" %>
   </div>
+
+  <p>住所や駅名、目印などで検索できます。</p>
+<form onsubmit="return false;">
+  <input type="text" value="株式会社Maromaro" id="address">
+  <button type="button" value="検索" id="map_button">検索</button>
+</form>
+<!-- 地図を表示させる要素 -->
+<div class="map_box01"><div id="map-canvas" style="width: 500px;height: 350px;"></div></div>
+ 
+<p>マーカーのある位置の<br>
+緯度 <input type="text" id="lat" value=""><br>
+経度 <input type="text" id="lng" value=""><br>
+地図上をクリックするとマーカーを移動できます。</p>
   
   <script>
-  let map
-  let geocoder
-  var infoWindow;
-  const display = document.getElementById('display')
-  
-  function initMap(){
-    var target = document.getElementById('target');
-    var centerp = {lat: 37.67229496806523, lng: 137.88838989062504};
-  
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: 40.7828, lng:-73.9653},
-      zoom: 12,
-    });
-  
-    map = new google.maps.Map(target, {
-      center: centerp,
-      zoom: 2,
-    });
-  }
-  
-  function codeAddress(){
-    let inputAddress = document.getElementById('address').value;
-  
-    geocoder.geocode( { 'address': inputAddress}, function(results, status) {
-      if (status == 'OK') {
-        map.setCenter(results[0].geometry.location);
-        var marker = new google.maps.Marker({
+  var getMap = (function() {
+    function codeAddress(address) {
+      // google.maps.Geocoder()コンストラクタのインスタンスを生成
+      var geocoder = new google.maps.Geocoder();
+   
+      // 地図表示に関するオプション
+      var mapOptions = {
+        zoom: 16,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+   
+      // 地図を表示させるインスタンスを生成
+      var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+       
+      //マーカー変数用意
+      var marker;
+       
+      // geocoder.geocode()メソッドを実行 
+      geocoder.geocode( { 'address': address}, function(results, status) {
+         
+        // ジオコーディングが成功した場合
+        if (status == google.maps.GeocoderStatus.OK) {
+           
+          // 変換した緯度・経度情報を地図の中心に表示
+          map.setCenter(results[0].geometry.location);
+           
+          //☆表示している地図上の緯度経度
+          document.getElementById('lat').value=results[0].geometry.location.lat();
+          document.getElementById('lng').value=results[0].geometry.location.lng();
+           
+          // マーカー設定
+          marker = new google.maps.Marker({
             map: map,
             position: results[0].geometry.location
+          });
+         
+        // ジオコーディングが成功しなかった場合
+        } else {
+          console.log('Geocode was not successful for the following reason: ' + status);
+        }
+       
+      });
+       
+      // マップをクリックで位置変更
+      map.addListener('click', function(e) {
+        getClickLatLng(e.latLng, map);
+      });
+      function getClickLatLng(lat_lng, map) {
+         
+        //☆表示している地図上の緯度経度
+        document.getElementById('lat').value=lat_lng.lat();
+        document.getElementById('lng').value=lat_lng.lng();
+           
+        // マーカーを設置
+        marker.setMap(null);
+        marker = new google.maps.Marker({
+          position: lat_lng,
+          map: map
         });
-        display.textContent = "検索結果：" + results[ 0 ].geometry.location
-      } else {
-        alert('該当する結果がありませんでした：' + status);
+       
+        // 座標の中心をずらす
+        map.panTo(lat_lng);
       }
-    });   
-  }
+     
+    }
+     
+    //inputのvalueで検索して地図を表示
+    return {
+      getAddress: function() {
+        // ボタンに指定したid要素を取得
+        var button = document.getElementById("map_button");
+         
+        // ボタンが押された時の処理
+        button.onclick = function() {
+          // フォームに入力された住所情報を取得
+          var address = document.getElementById("address").value;
+          // 取得した住所を引数に指定してcodeAddress()関数を実行
+          codeAddress(address);
+        }
+         
+        //読み込まれたときに地図を表示
+        window.onload = function(){
+          // フォームに入力された住所情報を取得
+          var address = document.getElementById("address").value;
+          // 取得した住所を引数に指定してcodeAddress()関数を実行
+          codeAddress(address);
+        }
+      }
+     
+    };
+   
+  })();
+  getMap.getAddress();
 
   </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfCmlyL2lyPkB-fTxtmVP_q0VEpEtGXW4&language=ja&region=JP&callback=initMap" async defer></script>
