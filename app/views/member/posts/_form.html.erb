@@ -60,20 +60,6 @@
             center: {lat: 35.68123620000001, lng:139.7671248},
             zoom: 12,
         });
-  
-  
-        <% @maps.each do |m| %>
-            (function(){
-            var contentString = "住所：<%= m.address %>"; 
-  
-            var marker = new google.maps.Marker({
-                position:{lat: <%= m.latitude %>, lng: <%= m.longitude %>},
-                map: map,
-                title: contentString
-            });
-  
-            })();
-        <% end %>
         }
   </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfCmlyL2lyPkB-fTxtmVP_q0VEpEtGXW4&language=ja&region=JP&callback=initMap" async defer></script>
