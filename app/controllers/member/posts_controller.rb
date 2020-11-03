@@ -18,6 +18,7 @@ class Member::PostsController < Member::Base
   # GET /member/posts/new
   def new
     @member_post = Member::Post.new
+    @member_post.build_spot
   end
 
   # GET /member/posts/1/edit
