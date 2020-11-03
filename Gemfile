@@ -17,6 +17,9 @@ gem 'fog-aws'
 
 gem "bootsnap", ">= 1.4.2", require: false
 gem 'gmaps4rails', '~> 2.1', '>= 2.1.2'
+gem "geocoder"
+gem "gon"
+gem "dotenv-rails"
 
 gem "bcrypt"
 gem "rails-i18n"
