@@ -1,3 +1,8 @@
+<head>
+  <%= include_gon %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 <%= form_with(model: member_post, local: true) do |form| %>
   <% if member_post.errors.any? %>
     <div id="error_explanation">
@@ -71,38 +76,26 @@
     });
   }
   
-  document.getElementById('search').addEventListener('click', function() {
-
-    var place = document.getElementById('address').value;
-    var geocoder = new google.maps.Geocoder(); 
-
-    geocoder.geocode({
-      address: place
-    }, function(results, status) {
-      if (status == google.maps.GeocoderStatus.OK) {
-
-        var bounds = new google.maps.LatLngBounds();
-
-        for (var i in results) {
-          if (results[0].geometry) {
-            var latlng = results[0].geometry.location;
-            var address = results[0].formatted_address;
-            bounds.extend(latlng);
-            setMarker(latlng);
-            setInfoW(place, latlng, address);
-            markerEvent();
-          }
-        }
-      } elsif (status == google.maps.GeocoderStatus.ZERO_RESULTS) {
-        alert("見つかりません");
+  function codeAddress(){
+    let inputAddress = document.getElementById('address').value;
+  
+    geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+      if (status == 'OK') {
+        map.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+        });
+        display.textContent = "検索結果：" + results[ 0 ].geometry.location
       } else {
-        console.log(status);
-        alert("エラー発生");
+        alert('該当する結果がありませんでした：' + status);
       }
-    });
+    });   
+  }
 
-  });
+  
   </script>
+  <%= yield %>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfCmlyL2lyPkB-fTxtmVP_q0VEpEtGXW4&language=ja&region=JP&callback=initMap" async defer></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <% end %>
