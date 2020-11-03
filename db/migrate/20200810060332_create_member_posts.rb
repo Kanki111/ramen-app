@@ -7,6 +7,8 @@ class CreateMemberPosts < ActiveRecord::Migration[6.0]
       t.string :ramen_type
       t.float :latitude
       t.float :longitude
+      t.latitude:float 
+      t.longitude:float
 
       t.timestamps
     end
