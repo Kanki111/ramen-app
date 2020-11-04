@@ -40,10 +40,11 @@
   <div class="field">
     <%= form.label :mapの追加, class: "form_content_label" %>
 
-    <input id="address" type="textbox" value="検索">
-    <input type="button" value="Geocode" id="submit" onclick="codeAddress()">
-    <div id="display">何かが表示される、、、、！</div>
-    <div id='map'></div>
+    <div id="floating-panel">
+    <input id="latlng" type="textbox" value="37.09024, -95.712891">
+    <input id="submit" type="button" value="Reverse Geocode">
+</div>
+<div id="map"></div>
   </div>
 
   <div class="actions">
