@@ -52,6 +52,8 @@
 
   <script>
     let map
+    let marker;
+    let infoWindow;
   
       function initMap(){
         geocoder = new google.maps.Geocoder()
@@ -61,6 +63,41 @@
             zoom: 12,
         });
         }
+
+        document.getElementById('search').addEventListener('click', function() {
+
+          var place = document.getElementById('keyword').value;
+          var geocoder = new google.maps.Geocoder();      // geocoderのコンストラクタ
+
+          geocoder.geocode({
+            address: place
+          }, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+
+              var bounds = new google.maps.LatLngBounds();
+
+              for (var i in results) {
+                if (results[0].geometry) {
+                  // 緯度経度を取得
+                  var latlng = results[0].geometry.location;
+                  // 住所を取得
+                  var address = results[0].formatted_address;
+                  // 検索結果地が含まれるように範囲を拡大
+                  bounds.extend(latlng);
+                  // マーカーのセット
+                  setMarker(latlng);
+                  // マーカーへの吹き出しの追加
+                  setInfoW(place, latlng, address);
+                  // マーカーにクリックイベントを追加
+                  markerEvent();
+                }
+              }
+            } else {
+              alert("見つかりません");
+            }
+          });
+
+        });
   </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfCmlyL2lyPkB-fTxtmVP_q0VEpEtGXW4&language=ja&region=JP&callback=initMap" async defer></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
