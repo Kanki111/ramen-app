@@ -69,29 +69,30 @@
             map: map
           });
 
-          document.getElementById('submit').addEventListener('click', function() {
-            var geoCodeResults = geocodeAddress();
-            testResults(geoCodeResults);
+          document.getElementById('submit').addEventListener('click', function () {
+            geocodeAddress();
             alert("処理終了");
         });
-        }
+    }
 
-        function geocodeAddress()
-        {
-            var geocoder = new google.maps.Geocoder();
-            var address = document.getElementById('address').value;
-            geocoder.geocode({'address': address}, function(results, status) {
-                if (status === google.maps.GeocoderStatus.OK) {
-                    return {"lat":results[0].geometry.location.lat(), "lng":results[0].geometry.location.lng()};
-                } else {
-              alert('該当する結果がありませんでした：' + status);
+    function geocodeAddress()
+    {
+        var address = document.getElementById('address').value;
+        $.ajax({
+            url: 'http://maps.googleapis.com/maps/api/geocode/json',
+            data: {
+                address: address
             }
-          });   
-        }
-        function testResults(geoCodeResults)
-        {
-            console.log(geoCodeResults);
-        }
+        }).done(function(geoCodeResults, status){
+            testResults(geoCodeResults);
+        }).fail(function(data){
+            alert('error');
+        });
+
+    }
+    function testResults(geoCodeResults) {
+        console.log(geoCodeResults);
+    }
         initMap();
   </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfCmlyL2lyPkB-fTxtmVP_q0VEpEtGXW4&language=ja&region=JP&callback=initMap" async defer></script>
