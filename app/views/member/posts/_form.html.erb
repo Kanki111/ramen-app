@@ -81,20 +81,17 @@
         let latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
         geocoder.geocode({'location': latlng}, function(results, status) {
             if (status === google.maps.GeocoderStatus.OK) {
-                if (results[1]) {
-                    callback(results);
-                } else {
-                    alert('No results found');
-                }
+              new google.maps.Map(target, {
+                center: results[0].geometry.location,
+                zoom: 14
             } else {
-                alert('Geocoder failed due to: ' + status);
+                alert('失敗しました。理由: ' + status);
             }
         });
     }
 
     function testResults(geoCodeResults)
     {
-        // ジオコーディング結果を用いた処理
         console.log(geoCodeResults);
     }
     initMap();
