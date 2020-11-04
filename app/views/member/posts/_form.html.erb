@@ -70,25 +70,27 @@
           });
 
           document.getElementById('submit').addEventListener('click', function() {
-            geocodeAddress(geocoder, map);
+            var geoCodeResults = geocodeAddress();
+            testResults(geoCodeResults);
+            alert("処理終了");
         });
         }
 
-        function codeAddress(geocoder, resultsMap){
-          let inputAddress = document.getElementById('address').value;
-        
-          geocoder.geocode( { 'address': inputAddress}, function(results, status) {
-            if (status === google.maps.GeocoderStatus.OK) {
-              map.setCenter(results[0].geometry.location);
-              var marker = new google.maps.Marker({
-                  map: map,
-                  position: results[0].geometry.location
-              });
-              display.textContent = "検索結果：" + results[ 0 ].geometry.location
-            } else {
+        function geocodeAddress()
+        {
+            var geocoder = new google.maps.Geocoder();
+            var address = document.getElementById('address').value;
+            geocoder.geocode({'address': address}, function(results, status) {
+                if (status === google.maps.GeocoderStatus.OK) {
+                    return {"lat":results[0].geometry.location.lat(), "lng":results[0].geometry.location.lng()};
+                } else {
               alert('該当する結果がありませんでした：' + status);
             }
           });   
+        }
+        function testResults(geoCodeResults)
+        {
+            console.log(geoCodeResults);
         }
         initMap();
   </script>
