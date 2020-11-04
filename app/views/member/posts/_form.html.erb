@@ -67,20 +67,19 @@
             position:  {lat: 35.68123620000001, lng:139.7671248},
             map: map
           });
-          let geocoder = new google.maps.Geocoder();
 
           document.getElementById('submit').addEventListener('click', function() {
             geocodeAddress(geocoder, map);
         });
         }
 
-        function codeAddress(geocoder, resultsMap){
-          let address = document.getElementById('address').value;
+        function codeAddress(){
+          let inputAddress = document.getElementById('address').value;
         
-          geocoder.geocode({'address': address}, function(results, status) {
-            if (status === google.maps.GeocoderStatus.OK) { 
+          geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+            if (status == 'OK') {
               map.setCenter(results[0].geometry.location);
-              let marker = new google.maps.Marker({
+              var marker = new google.maps.Marker({
                   map: map,
                   position: results[0].geometry.location
               });
@@ -90,7 +89,6 @@
             }
           });   
         }
-        initMap();
   </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfCmlyL2lyPkB-fTxtmVP_q0VEpEtGXW4&language=ja&region=JP&callback=initMap" async defer></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
