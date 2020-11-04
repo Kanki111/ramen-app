@@ -67,26 +67,22 @@
             map: map
           });
         }
-
-
-      function codeAddress(){
-        //検索フォームの入力内容を取得
-        let inputAddress = document.getElementById('address').value;
-      
-        geocoder.geocode( { 'address': inputAddress}, function(results, status) {
-          //該当する検索結果がヒットした時に、地図の中心を検索結果の緯度経度に更新する
-          if (status == 'OK') {
-            map.setCenter(results[0].geometry.location);
-            var marker = new google.maps.Marker({
-                map: map,
-                position: results[0].geometry.location
-            });
-          } else {
-            //検索結果が何もなかった場合に表示
-            alert('該当する結果がありませんでした：' + status);
-          }
-        });   
-      }
+        
+        function codeAddress(){
+          let inputAddress = document.getElementById('address').value;
+        
+          geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+            if (status == 'OK') {
+              map.setCenter(results[0].geometry.location);
+              var marker = new google.maps.Marker({
+                  map: map,
+                  position: results[0].geometry.location
+              });
+            } else {
+              alert('該当する結果がありませんでした：' + status);
+            }
+          });   
+        }
   </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfCmlyL2lyPkB-fTxtmVP_q0VEpEtGXW4&language=ja&region=JP&callback=initMap" async defer></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
