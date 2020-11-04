@@ -52,8 +52,7 @@
 
   <script>
     let map
-    let marker;
-    let infoWindow;
+    let geocoder
   
       function initMap(){
         geocoder = new google.maps.Geocoder()
@@ -64,40 +63,25 @@
         });
         }
 
-        document.getElementById('search').addEventListener('click', function() {
 
-          var place = document.getElementById('keyword').value;
-          var geocoder = new google.maps.Geocoder();      // geocoderのコンストラクタ
-
-          geocoder.geocode({
-            address: place
-          }, function(results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-
-              var bounds = new google.maps.LatLngBounds();
-
-              for (var i in results) {
-                if (results[0].geometry) {
-                  // 緯度経度を取得
-                  var latlng = results[0].geometry.location;
-                  // 住所を取得
-                  var address = results[0].formatted_address;
-                  // 検索結果地が含まれるように範囲を拡大
-                  bounds.extend(latlng);
-                  // マーカーのセット
-                  setMarker(latlng);
-                  // マーカーへの吹き出しの追加
-                  setInfoW(place, latlng, address);
-                  // マーカーにクリックイベントを追加
-                  markerEvent();
-                }
-              }
-            } else {
-              alert("見つかりません");
-            }
-          });
-
-        });
+      function codeAddress(){
+        //検索フォームの入力内容を取得
+        let inputAddress = document.getElementById('address').value;
+      
+        geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+          //該当する検索結果がヒットした時に、地図の中心を検索結果の緯度経度に更新する
+          if (status == 'OK') {
+            map.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location
+            });
+          } else {
+            //検索結果が何もなかった場合に表示
+            alert('該当する結果がありませんでした：' + status);
+          }
+        });   
+      }
   </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfCmlyL2lyPkB-fTxtmVP_q0VEpEtGXW4&language=ja&region=JP&callback=initMap" async defer></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
