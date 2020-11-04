@@ -81,9 +81,11 @@
         let latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
         geocoder.geocode({'location': latlng}, function(results, status) {
             if (status === google.maps.GeocoderStatus.OK) {
-              new google.maps.Map(target, {
-                center: results[0].geometry.location,
-                zoom: 14
+                if (results[1]) {
+                    callback(results);
+                } else {
+                    alert('No results found');
+                }
             } else {
                 alert('失敗しました。理由: ' + status);
             }
