@@ -32,7 +32,7 @@ class Member::PostsController < Member::Base
 
     respond_to do |format|
       if @member_post.save
-        format.html { redirect_to @member_post, notice: 'Post was successfully created.' }
+        format.html { redirect_to @member_post, notice: '投稿されました。' }
         format.json { render :show, status: :created, location: @member_post }
       else
         format.html { render :new }
