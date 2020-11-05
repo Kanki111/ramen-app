@@ -59,7 +59,6 @@
     function initMap()
     {
         var myLatLng = {lat: 35.658581, lng: 139.745433};
-        var address = document.getElementById('address').textContent; 
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 15,
             center: myLatLng
@@ -75,37 +74,22 @@
         });
     }
 
-    geocoder.geocode({ address: address }, function(results, status){
-      if (status === 'OK' && results[0]){  
-        //マップのインスタンスを変数に代入
-         var map = new google.maps.Map(target, {  
-           center: results[0].geometry.location,
-           zoom: 14
-         });
-        
-        //マーカーの生成
-         var marker = new google.maps.Marker({
-           position: results[0].geometry.location,
-           map: map,
-           animation: google.maps.Animation.DROP
-         });
-        
-        //情報ウィンドウの生成
-         var infoWindow = new google.maps.InfoWindow({
-           content: 'Hello!',
-           pixelOffset: new google.maps.Size(0, 5)
-         });
-  
-        //マーカーにリスナーを設定
-        marker.addListener('click', function(){
-           infoWindow.open(map, marker);
-         });
-        
-      }else{ 
-        alert('失敗しました。理由: ' + status);
-        return;
-      }
-   });
+    function geocodeLatLng(callback) {
+        let geocoder = new google.maps.Geocoder();
+        let input = document.getElementById('latlng').value;
+        let latlngStr = input.split(',', 2);
+        let latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
+        geocoder.geocode({'location': latlng}, function(results, status) {
+            if (status === google.maps.GeocoderStatus.OK) {
+                if (results[1]) {
+                    callback(results);
+                } else {
+                    alert('No results found');
+                }
+            } else {
+                alert('失敗しました。理由: ' + status);
+            }
+        });
     }
 
     function testResults(geoCodeResults)
