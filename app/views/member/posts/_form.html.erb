@@ -83,6 +83,7 @@
             if (status === google.maps.GeocoderStatus.OK) {
                 if (results[1]) {
                     callback(results);
+                    alert("成功")
                 } else {
                     alert('No results found');
                 }
