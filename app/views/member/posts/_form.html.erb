@@ -37,73 +37,12 @@
     <%= form.rich_text_area :content %>
   </div>
 
-  <div class="field">
-    <%= form.label :mapの追加, class: "form_content_label" %>
 
-    <div id="floating-panel">
-    <input id="latlng" type="textbox" value="37.09024, -95.712891">
-    <input id="submit" type="button" value="Reverse Geocode">
-</div>
-<div id="map"></div>
-  </div>
 
   <div class="actions">
     <%= form.submit :投稿をする, class: "new_post_button" %>
   </div>
 
-  <script>
-    let map
-    let geocoder
-    let marker
-  
-    function initMap()
-    {
-        var myLatLng = {lat: 35.658581, lng: 139.745433};
-        var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 15,
-            center: myLatLng
-        });
-        var marker = new google.maps.Marker({
-            position: myLatLng,
-            map: map
-        });
-
-        document.getElementById('submit').addEventListener('click', function () {
-            geocodeLatLng(testResults);
-            alert("処理終了");
-        });
-    }
-
-    function geocodeLatLng(callback) {
-        let geocoder = new google.maps.Geocoder();
-        let input = document.getElementById('latlng').value;
-        let latlngStr = input.split(',', 2);
-        let latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
-        geocoder.geocode({'location': latlng}, function(results, status) {
-            if (status === google.maps.GeocoderStatus.OK) {
-                if (results[1]) {
-                  let lat = results[1].geometry.location.lat(); //ジオコードした結果の緯度
-                  let lng = results[1].geometry.location.lng(); //ジオコードした結果の経度
-                  let mark = {
-                      lat: lat, //緯度
-                      lng: lng  //経度
-                  };
-                  alert("成功");
-                } else {
-                    alert('No results found');
-                }
-            } else {
-                alert('失敗しました。理由: ' + status);
-            }
-        });
-    }
-
-    function testResults(geoCodeResults)
-    {
-        console.log(geoCodeResults);
-    }
-    initMap();
-  </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfCmlyL2lyPkB-fTxtmVP_q0VEpEtGXW4&language=ja&region=JP&callback=initMap" type="text/javascript"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js"></script>
