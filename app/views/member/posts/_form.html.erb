@@ -82,8 +82,12 @@
         geocoder.geocode({'location': latlng}, function(results, status) {
             if (status === google.maps.GeocoderStatus.OK) {
                 if (results[1]) {
-                    callback(results);
-                    alert("成功")
+                  let lat = results[1].geometry.location.lat(); //ジオコードした結果の緯度
+                  let lng = results[1].geometry.location.lng(); //ジオコードした結果の経度
+                  let mark = {
+                      lat: lat, //緯度
+                      lng: lng  //経度
+                  };
                 } else {
                     alert('No results found');
                 }
