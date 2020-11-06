@@ -27,6 +27,8 @@ default: &default
   production:
     <<: *default
     database: db/production.postgresql
+    username: gwvhxsieiwqywj
+    password: d097187d39b8bd606df5d0bd7aa91756f60419f337cb3c2b11862d8d486d0b6d
 
 
   # The specified database role being used to connect to postgres.
