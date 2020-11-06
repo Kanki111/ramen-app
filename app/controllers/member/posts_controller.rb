@@ -66,11 +66,13 @@ end
   # DELETE /member/posts/1
   # DELETE /member/posts/1.json
   def destroy
+    @member_post = Member::Post.find(params[:id])
     @member_post.destroy
     respond_to do |format|
       format.html { redirect_to member_posts_url, notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }
     end
+    redirect_to("/")
   end
 
   private
