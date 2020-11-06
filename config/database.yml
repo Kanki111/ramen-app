@@ -20,9 +20,9 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  host: db
-  username: postgresql-curved-77313
-  password: password
+  host: ec2-52-23-86-208.compute-1.amazonaws.com
+  username: gwvhxsieiwqywj
+  password: d097187d39b8bd606df5d0bd7aa91756f60419f337cb3c2b11862d8d486d0b6d
 
   production:
     <<: *default
