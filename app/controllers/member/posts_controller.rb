@@ -1,5 +1,5 @@
 class Member::PostsController < Member::Base
-  before_action :set_member_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_member_post, only: [:show, :edit, :update, :destroy, :map]
 
   # GET /member/posts
   # GET /member/posts.json
