@@ -7,6 +7,9 @@
     <div class="top_page">
     <a href="/member/images/index"><span class="tag">トップページへ</span></a>
     </div>
+    <div class="table_page">
+      <span class="tag"><%= link_to "マップページへ", :member_ramen_member_show %></span>
+    </div>
     <div class="post_page">
     <a href="/member/posts/new"><span class="tag">新規投稿ページへ</span></a>
     </div>
@@ -14,10 +17,7 @@
       <a href="/member/posts"><span class="tag">テーブルページへ</span></a>
     </div>
     <div class="account_page">
-      <a href="/member/password"><span class="tag">マップページへ</span></a>
+      <a href="/member/password"><span class="tag">アカウントページへ</span></a>
     </div>
-    <div class="account_page">
-    <span class="tag"><%= link_to "アカウント情報をみる", :member_ramen_member_show if login_member_now %></span>
-  </div>
   </div>
 </footer>
