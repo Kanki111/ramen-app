@@ -22,10 +22,12 @@ class Member::PostsController < Member::Base
 
   # GET /member/posts/1/edit
   def edit
+    @member_post =Member::Post.find(params[:id])
   end
 
   # GET /member/posts/map
   def map
+    @member_post =Member::Post.find(params[:id])
   end
 
   # POST /member/posts
@@ -76,7 +78,6 @@ end
       format.html { redirect_to member_posts_url, notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }
     end
-    redirect_to("/")
   end
 
   private
