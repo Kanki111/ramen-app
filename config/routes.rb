@@ -20,11 +20,4 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
     resources :posts 
   end
-
-  namespace :manager do
-    root "top#index"
-    get "login" => "sessions#new", as: :login
-    post "session" => "sessions#create", as: :session
-    delete "session" => "sessions#destroy"
-  end
 end
