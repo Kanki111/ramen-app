@@ -35,12 +35,12 @@ function initMap(){
   geocoder = new google.maps.Geocoder()
 
   map = new google.maps.Map(document.getElementById('map'), {
-    var myLatLng = {lat: 35.6566376, lng: 139.7459452};,
+    center: {lat: 35.6566376, lng: 139.7459452},
     zoom: 12,
   });
 
   marker = new google.maps.Marker({
-    var myLatLng = {lat: 35.6566376, lng: 139.7459452};,
+    position:  {lat: 35.6566376, lng: 139.7459452},
     map: map
   });
 }
