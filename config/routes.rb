@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     get "ramen_member/new" => "member#new"
     post "ramen_member/new" => "member#create"
     get "ramen_member/show" => "member#show"
+    get "ramen_member/map" => "member#map"
     resources :comments, only: [:create]
     resources :posts 
   end

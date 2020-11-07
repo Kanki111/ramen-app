@@ -24,6 +24,10 @@ class Member::PostsController < Member::Base
   def edit
   end
 
+  # GET /member/posts/map
+  def map
+  end
+
   # POST /member/posts
   # POST /member/posts.json
 
