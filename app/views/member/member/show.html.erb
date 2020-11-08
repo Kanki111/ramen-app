@@ -137,6 +137,16 @@ var markerData = [ {
     lat: 35.732542,
     lng: 139.710325,
     content: '麺や寵児<br><img src="https://image-ramen-app-main.s3-ap-northeast-1.amazonaws.com/uploads/member/post/image/53/%E5%AF%B5%E5%85%90.JPG" width="200"><br><a href="https://ramen-app-main.herokuapp.com/member/posts/53" target="_blank">投稿ページへ</a>'
+  },{
+    title: '青葉',
+    lat: 35.704508,
+    lng: 139.579661,
+    content: '青葉<br><img src="https://image-ramen-app-main.s3-ap-northeast-1.amazonaws.com/uploads/member/post/image/8/%E9%9D%92%E8%91%89.jpg" width="200"><br><a href="https://ramen-app-main.herokuapp.com/member/posts/8" target="_blank">投稿ページへ</a>'
+  },{
+    title: '㐂輪 新丸子',
+    lat: 35.580948,
+    lng: 139.663744,
+    content: '㐂輪 新丸子<br><img src="https://image-ramen-app-main.s3-ap-northeast-1.amazonaws.com/uploads/member/post/image/11/%E3%90%82%E8%BC%AA.JPG" width="200"><br><a href="https://ramen-app-main.herokuapp.com/member/posts/11" target="_blank">投稿ページへ</a>'
   }];	
 
   function initMap() {
@@ -145,7 +155,7 @@ var markerData = [ {
     // 地図の基本設定
     map = new google.maps.Map(document.getElementById('map_canvas'), {
       center: mapLatLng, // 地図の中心座標を指定
-      zoom: 9,
+      zoom: 10,
       mapTypeId: google.maps.MapTypeId.ROADMAP // マップの表示種別選択 (ROADMAP・SATELLITE・TERRAIN・HYBRIDから選択)
     });
     
