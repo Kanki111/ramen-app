@@ -88,7 +88,7 @@ end
 
     # Only allow a list of trusted parameters through.
     def member_post_params
-      params.require(:member_post).permit(:title, :place, :ramen_type, :image, :content)
+      params.require(:member_post).permit(:title, :place, :ramen_type, :image, :content, :latitude)
     end
 
     def permit_params
