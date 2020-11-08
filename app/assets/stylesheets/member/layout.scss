@@ -305,6 +305,8 @@ div.field_with_errors {
 }
 #map_canvas{
     margin: 0 auto;
+    width:96%;
+    height:500px;
 }
 .map_text{
     text-align: center;
@@ -312,6 +314,4 @@ div.field_with_errors {
 }
 .map_title{
     font-size: 40px;
-    width:96%;
-    height:500px;
 }
