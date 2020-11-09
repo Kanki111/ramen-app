@@ -40,7 +40,7 @@ var marker = [];
 var infoWindow = [];
 // マーカーに設定するタイトル・緯度・経度・内容
 var markerData = [ {
-  title: '無邪気 自由が丘北口店',
+  title: '<%= @member_post.title %>',
   lat: <%= @member_post.latitude %>,
   lng: <%= @member_post.longitude %>,
   content: "<%= @member_post.title %><br><img src='<%= @member_post.image.to_s%>' class='pop_image'><br><div class='test'><a href='https://ramen-app-main.herokuapp.com/member/posts/27' target='_blank'>投稿ページへ</a></div>"
