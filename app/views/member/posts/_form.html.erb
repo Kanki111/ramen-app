@@ -52,64 +52,12 @@
     <input id="latlng" type="textbox" value="37.09024, -95.712891">
     <input id="submit" type="button" value="Reverse Geocode">
 </div>
-<div id="map_canvas"></div>
   </div>
 
   <div class="actions">
     <%= form.submit :投稿をする, class: "new_post_button" %>
   </div>
 
-<script>
-var map;
-var marker = [];
-var infoWindow = [];
-// マーカーに設定するタイトル・緯度・経度・内容
-var markerData = [ {
-  title: '無邪気 自由が丘北口店',
-  lat: 35.607947,
-  lng: 139.669722,
-  content: '無邪気 自由が丘北口店<br><img src="https://image-ramen-app-main.s3-ap-northeast-1.amazonaws.com/uploads/member/post/image/27/%E3%83%8D%E3%82%AD%E3%82%99%E3%83%A9%E3%83%BC%E3%83%A1%E3%83%B3.JPG" class="pop_image"><br><div class="test"><a href="https://ramen-app-main.herokuapp.com/member/posts/27" target="_blank">投稿ページへ</a></div>'
-}];	
-
-  function initMap() {
-    // 緯度経度のデータ作成
-    var mapLatLng = new google.maps.LatLng({lat: 35.732981, lng: 139.727423});
-    // 地図の基本設定
-    map = new google.maps.Map(document.getElementById('map_canvas'), {
-      center: mapLatLng, // 地図の中心座標を指定
-      zoom: 10,
-      mapTypeId: google.maps.MapTypeId.ROADMAP // マップの表示種別選択 (ROADMAP・SATELLITE・TERRAIN・HYBRIDから選択)
-    });
-    
-    // マーカー毎の処理
-    for (var i = 0; i < markerData.length; i++) {
-      // 緯度経度のデータを作成
-      markerLatLng = new google.maps.LatLng({lat: markerData[i]['lat'], lng: markerData[i]['lng']});
-      marker[i] = new google.maps.Marker({
-        position: markerLatLng, // マーカーを立てる位置を指定
-        map: map, // マーカーを立てる地図を指定
-        title: markerData[i]['title'] // ツールヒント
-      });
-      
-      // 吹き出しの設定
-      infoWindow[i] = new google.maps.InfoWindow({
-        // 吹き出しに表示する内容を設定する
-        content: markerData[i]['content']
-      });
-      
-      // マーカーにクリックイベントを追加
-      markerEvent(i);
-    }
-  }
-   
-  // マーカーにクリックイベントを追加
-  function markerEvent(i) {
-      marker[i].addListener('click', function() {
-        // 吹き出しの表示
-        infoWindow[i].open(map, marker[i]);
-    });
-  }
-</script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfCmlyL2lyPkB-fTxtmVP_q0VEpEtGXW4&language=ja&region=JP&callback=initMap" type="text/javascript"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js"></script>
