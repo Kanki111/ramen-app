@@ -9,12 +9,195 @@
 var map;
 var marker = [];
 var infoWindow = [];
+// マーカーに設定するタイトル・緯度・経度・内容
 var markerData = [ {
   title: '無邪気 自由が丘北口店',
-  lat: <%= @member_post.latitude %>,
-  lng: <%= @member_post.longitude %>,
-  content: "<%= @member_post.title %><br><img src='<%= @member_post.image.to_s%>' class='pop_image'><br><div class='test'><a href='https://ramen-app-main.herokuapp.com/member/posts/27' target='_blank'>投稿ページへ</a></div>"
-}];	
+  lat: 35.607947,
+  lng: 139.669722,
+  content: '無邪気 自由が丘北口店<br><img src="https://image-ramen-app-main.s3-ap-northeast-1.amazonaws.com/uploads/member/post/image/27/%E3%83%8D%E3%82%AD%E3%82%99%E3%83%A9%E3%83%BC%E3%83%A1%E3%83%B3.JPG" class="pop_image"><br><div class="test"><a href="https://ramen-app-main.herokuapp.com/member/posts/27" target="_blank">投稿ページへ</a></div>'
+}, {
+    title: 'ラーメン豚山 大塚店',
+    lat: 35.733084,
+    lng: 139.727874,
+    content: 'ラーメン豚山 大塚店<br><img src="https://image-ramen-app-main.s3-ap-northeast-1.amazonaws.com/uploads/member/post/image/9/%E8%B1%9A%E5%B1%B1.jpg" class="pop_image"><br><div class="test"><a href="https://ramen-app-main.herokuapp.com/member/posts/9" target="_blank">投稿ページへ</a></div>'
+  } , {
+    title: '濃厚豚骨らーめん 吉春家',
+    lat: 35.732981,
+    lng: 139.727423,
+    content: '濃厚豚骨らーめん 吉春家<br><img src="https://image-ramen-app-main.s3-ap-northeast-1.amazonaws.com/uploads/member/post/image/18/%E5%90%89%E6%98%A5%E5%B1%8B.JPG" class="pop_image"><br><div class="test"><a href="https://ramen-app-main.herokuapp.com/member/posts/18" target="_blank">投稿ページへ</a></div>'
+  }, {
+    title: '博多濃麻呂 二子玉川店',
+    lat: 35.613865,
+    lng: 139.625316,
+    content: '博多濃麻呂 二子玉川店<br><img src="https://image-ramen-app-main.s3-ap-northeast-1.amazonaws.com/uploads/member/post/image/28/%E5%8D%9A%E5%A4%9A%E6%BF%83%E9%BA%BB%E5%91%82.JPG" class="pop_image"><br><div class="test"><a href="https://ramen-app-main.herokuapp.com/member/posts/28" target="_blank">投稿ページへ</a></div>'
+  } , {
+    title: '豚星。',
+    lat: 35.559966,
+    lng: 139.654415,
+    content: '豚星。<br><img src="https://image-ramen-app-main.s3-ap-northeast-1.amazonaws.com/uploads/member/post/image/29/%E8%B1%9A%E6%98%9F.JPG" class="pop_image"><br><div class="test"><a href="https://ramen-app-main.herokuapp.com/member/posts/29" target="_blank">投稿ページへ</a></div>'
+  }, {
+    title: '立川マシマシ 8号店',
+    lat: 35.914643,
+    lng: 139.482894,
+    content: '立川マシマシ 8号店<br><img src="https://image-ramen-app-main.s3-ap-northeast-1.amazonaws.com/uploads/member/post/image/30/%E7%AB%8B%E5%B7%9D%E3%83%9E%E3%82%B7%E3%83%9E%E3%82%B7.JPG" class="pop_image"><br><div class="test"><a href="https://ramen-app-main.herokuapp.com/member/posts/30" target="_blank">投稿ページへ</a></div>'
+  }, {
+    title: 'やすべえ',
+    lat: 35.710630,
+    lng: 139.704463,
+    content: 'やすべえ<br><img src="https://image-ramen-app-main.s3-ap-northeast-1.amazonaws.com/uploads/member/post/image/33/%E3%82%84%E3%81%99%E3%81%B8%E3%82%99%E3%81%88.JPG" class="pop_image"><br><div class="test"><a href="https://ramen-app-main.herokuapp.com/member/posts/33" target="_blank">投稿ページへ</a></div>'
+  }, {
+    title: '元祖赤のれん 節ちゃんラーメン 天神本店',
+    lat: 33.589182,
+    lng: 130.395793,
+    content: '元祖赤のれん 節ちゃんラーメン 天神本店<br><img src="https://image-ramen-app-main.s3-ap-northeast-1.amazonaws.com/uploads/member/post/image/24/%E5%A4%A9%E7%A5%9E%E5%85%83%E7%A5%96%E8%B5%A4%E3%81%AE%E3%82%8C%E3%82%93.JPG" class="pop_image"><br><div class="test"><a href="https://ramen-app-main.herokuapp.com/member/posts/24" target="_blank">投稿ページへ</a></div>'
+  }, {
+    title: '麺爺あぶら 早稲田店',
+    lat: 35.706637,
+    lng: 139.720623,
+    content: '麺爺あぶら 早稲田店<br><img src="https://image-ramen-app-main.s3-ap-northeast-1.amazonaws.com/uploads/member/post/image/26/%E9%BA%BA%E7%88%BA.JPG" class="pop_image"><br><div class="test"><a href="https://ramen-app-main.herokuapp.com/member/posts/26" target="_blank">投稿ページへ</a></div>'
+  }, {
+    title: '田中そば店',
+    lat: 35.702348,
+    lng: 139.770682,
+    content: '田中そば店<br><img src="https://image-ramen-app-main.s3-ap-northeast-1.amazonaws.com/uploads/member/post/image/25/%E7%94%B0%E4%B8%AD%E3%81%9D%E3%81%AF%E3%82%99.JPG" class="pop_image"><br><div class="test"><a href="https://ramen-app-main.herokuapp.com/member/posts/25" target="_blank">投稿ページへ</a></div>'
+  }, {
+    title: '横浜家系らーめん 武道家 吉祥寺店',
+    lat: 35.702676,
+    lng: 139.578592,
+    content: '横浜家系らーめん 武道家 吉祥寺店<br><img src="https://image-ramen-app-main.s3-ap-northeast-1.amazonaws.com/uploads/member/post/image/6/%E6%AD%A6%E9%81%93%E5%AE%B6.jpg" class="pop_image"><br><div class="test"><a href="https://ramen-app-main.herokuapp.com/member/posts/6" target="_blank">投稿ページへ</a></div>'
+  }, {
+    title: '銀座一蘭',
+    lat: 35.669025,
+    lng: 139.759163,
+    content: '銀座一蘭<br><img src="https://image-ramen-app-main.s3-ap-northeast-1.amazonaws.com/uploads/member/post/image/12/%E4%B8%80%E8%98%AD%E9%8A%80%E5%BA%A7.JPG" class="pop_image"><br><div class="test"><a href="https://ramen-app-main.herokuapp.com/member/posts/12" target="_blank">投稿ページへ</a></div>'
+  }, {
+    title: '横浜ラーメン 武蔵家 明大前店',
+    lat: 35.670414,
+    lng: 139.649907,
+    content: '横浜ラーメン 武蔵家 明大前店<br><img src="https://image-ramen-app-main.s3-ap-northeast-1.amazonaws.com/uploads/member/post/image/13/%E6%AD%A6%E8%94%B5%E5%AE%B6%E6%98%8E%E5%A4%A7%E5%89%8D.JPG" class="pop_image"><br><div class="test"><a href="https://ramen-app-main.herokuapp.com/member/posts/13" target="_blank">投稿ページへ</a></div>'
+  }, {
+    title: '武道家 早稲田',
+    lat: 35.706796,
+    lng: 139.719684,
+    content: '武道家 早稲田<br><img src="https://image-ramen-app-main.s3-ap-northeast-1.amazonaws.com/uploads/member/post/image/31/%E6%AD%A6%E9%81%93%E5%AE%B6%E6%97%A9%E7%A8%B2%E7%94%B0.JPG" class="pop_image"><br><div class="test"><a href="https://ramen-app-main.herokuapp.com/member/posts/31" target="_blank">投稿ページへ</a></div>'
+  }, {
+    title: 'ラーメン二郎三田本店',
+    lat: 35.648073,
+    lng: 139.741615,
+    content: 'ラーメン二郎三田本店<br><img src="https://image-ramen-app-main.s3-ap-northeast-1.amazonaws.com/uploads/member/post/image/31/%E6%AD%A6%E9%81%93%E5%AE%B6%E6%97%A9%E7%A8%B2%E7%94%B0.JPG" class="pop_image"><br><div class="test"><a href="https://ramen-app-main.herokuapp.com/member/posts/31" target="_blank">投稿ページへ</a></div>'
+  }, {
+    title: 'ソラノイロ ARTISAN NOODLES',
+    lat: 35.681730,
+    lng: 139.766185,
+    content: 'ソラノイロ ARTISAN NOODLES<br><img src="https://image-ramen-app-main.s3-ap-northeast-1.amazonaws.com/uploads/member/post/image/14/%E3%82%BD%E3%83%A9%E3%83%8E%E3%82%A4%E3%83%AD.JPG" class="pop_image"><br><div class="test"><a href="https://ramen-app-main.herokuapp.com/member/posts/14" target="_blank">投稿ページへ</a></div>'
+  }, {
+    title: '壱角屋',
+    lat: 35.702854,
+    lng: 139.579280,
+    content: '壱角屋<br><img src="https://image-ramen-app-main.s3-ap-northeast-1.amazonaws.com/uploads/member/post/image/7/%E5%A3%B1%E8%A7%92%E5%B1%8B.jpg" class="pop_image"><br><div class="test"><a href="https://ramen-app-main.herokuapp.com/member/posts/7" target="_blank">投稿ページへ</a></div>'
+  }, {
+    title: 'すごい煮干ラーメン凪 池袋西口店',
+    lat: 35.732733,
+    lng: 139.709693,
+    content: 'すごい煮干ラーメン凪 池袋西口店<br><img src="https://image-ramen-app-main.s3-ap-northeast-1.amazonaws.com/uploads/member/post/image/55/%E7%85%AE%E5%B9%B2%E3%81%97%E3%83%A9%E3%83%BC%E3%83%A1%E3%83%B3%E5%87%AA.JPG" class="pop_image"><br><div class="test"><a href="https://ramen-app-main.herokuapp.com/member/posts/55" target="_blank">投稿ページへ</a></div>'
+  }, {
+    title: '麺屋 HUlu-lu',
+    lat: 35.734989,
+    lng: 139.709081,
+    content: '麺屋 HUlu-lu<br><img src="https://image-ramen-app-main.s3-ap-northeast-1.amazonaws.com/uploads/member/post/image/56/hu-lulu.JPG" class="pop_image"><br><div class="test"><a href="https://ramen-app-main.herokuapp.com/member/posts/56" target="_blank">投稿ページへ</a></div>'
+  }, {
+    title: 'NOODLE VOICE',
+    lat: 35.728197,
+    lng: 139.709286,
+    content: 'NOODLE VOICE<br><img src="https://image-ramen-app-main.s3-ap-northeast-1.amazonaws.com/uploads/member/post/image/59/%E3%83%8C%E3%83%BC%E3%83%88%E3%82%99%E3%83%AB%E3%83%9B%E3%82%99%E3%82%A4%E3%82%B9.JPG" class="pop_image"><br><div class="test"><a href="https://ramen-app-main.herokuapp.com/member/posts/59" target="_blank">投稿ページへ</a></div>'
+  }, {
+    title: '春日亭池袋店',
+    lat: 35.727897,
+    lng: 139.708437,
+    content: '春日亭池袋店<br><img src="https://image-ramen-app-main.s3-ap-northeast-1.amazonaws.com/uploads/member/post/image/57/%E6%98%A5%E6%97%A5%E4%BA%AD%E6%B1%A0%E8%A2%8B.JPG" class="pop_image"><br><div class="test"><a href="https://ramen-app-main.herokuapp.com/member/posts/57" target="_blank">投稿ページへ</a></div>'
+  }, {
+    title: '麺屋六感堂',
+    lat: 35.733080,
+    lng: 139.717906,
+    content: '麺屋六感堂<br><img src="https://image-ramen-app-main.s3-ap-northeast-1.amazonaws.com/uploads/member/post/image/60/%E5%85%AD%E6%84%9F%E5%A0%82.JPG" class="pop_image"><br><div class="test"><a href="https://ramen-app-main.herokuapp.com/member/posts/60" target="_blank">投稿ページへ</a></div>'
+  }, {
+    title: '北海道らーめん ひむろ 池袋店',
+    lat: 35.730403,
+    lng: 139.713696,
+    content: '北海道らーめん ひむろ 池袋店<br><img src="https://image-ramen-app-main.s3-ap-northeast-1.amazonaws.com/uploads/member/post/image/15/%E5%8C%97%E6%B5%B7%E9%81%93%E3%83%A9%E3%83%BC%E3%83%A1%E3%83%B3%E3%81%B2%E3%82%80%E3%82%8D.JPG" class="pop_image"><br><div class="test"><a href="https://ramen-app-main.herokuapp.com/member/posts/15" target="_blank">投稿ページへ</a></div>'
+  }, {
+    title: '横浜家系ラーメン 円満家 大塚店',
+    lat: 35.733200,
+    lng: 139.727185,
+    content: '横浜家系ラーメン 円満家 大塚店<br><img src="https://image-ramen-app-main.s3-ap-northeast-1.amazonaws.com/uploads/member/post/image/16/%E5%86%86%E6%BA%80%E5%B1%8B.JPG" class="pop_image"><br><div class="test"><a href="https://ramen-app-main.herokuapp.com/member/posts/16" target="_blank">投稿ページへ</a></div>'
+  },{
+    title: '金伝丸渋谷',
+    lat: 35.660263,
+    lng: 139.699366,
+    content: '金伝丸渋谷<br><img src="https://image-ramen-app-main.s3-ap-northeast-1.amazonaws.com/uploads/member/post/image/17/%E9%87%91%E4%BC%9D%E4%B8%B8.JPG" class="pop_image"><br><div class="test"><a href="https://ramen-app-main.herokuapp.com/member/posts/17" target="_blank">投稿ページへ</a></div>'
+  },{
+    title: '麺や寵児',
+    lat: 35.732542,
+    lng: 139.710325,
+    content: '麺や寵児<br><img src="https://image-ramen-app-main.s3-ap-northeast-1.amazonaws.com/uploads/member/post/image/53/%E5%AF%B5%E5%85%90.JPG" class="pop_image"><br><div class="test"><a href="https://ramen-app-main.herokuapp.com/member/posts/53" target="_blank">投稿ページへ</a></div>'
+  },{
+    title: '青葉',
+    lat: 35.704508,
+    lng: 139.579661,
+    content: '青葉<br><img src="https://image-ramen-app-main.s3-ap-northeast-1.amazonaws.com/uploads/member/post/image/8/%E9%9D%92%E8%91%89.jpg" class="pop_image"><br><div class="test"><a href="https://ramen-app-main.herokuapp.com/member/posts/8" target="_blank">投稿ページへ</a></div>'
+  },{
+    title: '㐂輪 新丸子',
+    lat: 35.580948,
+    lng: 139.663744,
+    content: '㐂輪 新丸子<br><img src="https://image-ramen-app-main.s3-ap-northeast-1.amazonaws.com/uploads/member/post/image/11/%E3%90%82%E8%BC%AA.JPG" class="pop_image"><br><div class="test"><a href="https://ramen-app-main.herokuapp.com/member/posts/11" target="_blank">投稿ページへ</a></div>'
+  },{
+    title: '鶏の穴 池袋',
+    lat: 35.732598,
+    lng: 139.714654,
+    content: '鶏の穴 池袋<br><img src="https://image-ramen-app-main.s3-ap-northeast-1.amazonaws.com/uploads/member/post/image/54/%E9%B6%8F%E3%81%AE%E7%A9%B4.JPG" class="pop_image"><br><div class="test"><a href="https://ramen-app-main.herokuapp.com/member/posts/54" target="_blank">投稿ページへ</a></div>'
+  },{
+    title: '油そば専門店 春日亭 西新宿店',
+    lat: 35.694409,
+    lng: 139.698411,
+    content: '油そば専門店 春日亭 西新宿店<br><img src="https://image-ramen-app-main.s3-ap-northeast-1.amazonaws.com/uploads/member/post/image/19/%E6%98%A5%E6%97%A5%E4%BA%AD.JPG" class="pop_image"><br><div class="test"><a href="https://ramen-app-main.herokuapp.com/member/posts/19" target="_blank">投稿ページへ</a></div>'
+  },{
+    title: '万豚記 参宮橋',
+    lat: 35.677541,
+    lng: 139.692995,
+    content: '万豚記 参宮橋<br><img src="https://image-ramen-app-main.s3-ap-northeast-1.amazonaws.com/uploads/member/post/image/20/%E4%B8%87%E8%B1%9A%E8%A8%98.jpg" class="pop_image"><br><div class="test"><a href="https://ramen-app-main.herokuapp.com/member/posts/20" target="_blank">投稿ページへ</a></div>'
+  },{
+    title: 'ラーメン佐とう 三軒茶屋',
+    lat: 35.643826,
+    lng: 139.670511,
+    content: 'ラーメン佐とう 三軒茶屋<br><img src="https://image-ramen-app-main.s3-ap-northeast-1.amazonaws.com/uploads/member/post/image/22/%E3%83%A9%E3%83%BC%E3%83%A1%E3%83%B3%E4%BD%90%E3%81%A8%E3%81%86.JPG" class="pop_image"><br><div class="test"><a href="https://ramen-app-main.herokuapp.com/member/posts/22" target="_blank">投稿ページへ</a></div>'
+  },{
+    title: '野郎ラーメン 渋谷',
+    lat: 35.660341,
+    lng: 139.699180,
+    content: '野郎ラーメン 渋谷<br><img src="https://image-ramen-app-main.s3-ap-northeast-1.amazonaws.com/uploads/member/post/image/23/%E9%87%8E%E9%83%8E%E3%83%A9%E3%83%BC%E3%83%A1%E3%83%B3.JPG" class="pop_image"><br><div class="test"><a href="https://ramen-app-main.herokuapp.com/member/posts/23" target="_blank">投稿ページへ</a></div>'
+  },{
+    title: '麺匠 ようすけ 下高井戸店',
+    lat: 35.666443,
+    lng: 139.641104,
+    content: '麺匠 ようすけ 下高井戸店<br><img src="https://image-ramen-app-main.s3-ap-northeast-1.amazonaws.com/uploads/member/post/image/32/%E3%82%88%E3%81%86%E3%81%99%E3%81%91.JPG" class="pop_image"><br><div class="test"><a href="https://ramen-app-main.herokuapp.com/member/posts/32" target="_blank">投稿ページへ</a></div>'
+  },{
+    title: '東京豚骨拉麺ばんから 新宿歌舞伎町店',
+    lat: 35.694266,
+    lng: 139.701315,
+    content: '東京豚骨拉麺ばんから 新宿歌舞伎町店<br><img src="https://image-ramen-app-main.s3-ap-northeast-1.amazonaws.com/uploads/member/post/image/34/%E3%83%8F%E3%82%99%E3%83%B3%E3%82%AB%E3%83%A9.JPG" class="pop_image"><br><div class="test"><a href="https://ramen-app-main.herokuapp.com/member/posts/34" target="_blank">投稿ページへ</a></div>'
+  },{
+    title: '柴田商店 日吉',
+    lat: 35.554238,
+    lng: 139.646541,
+    content: '柴田商店 日吉<br><img src="https://image-ramen-app-main.s3-ap-northeast-1.amazonaws.com/uploads/member/post/image/35/%E6%9F%B4%E7%94%B0%E5%95%86%E4%BA%8B.JPG" class="pop_image"><br><div class="test"><a href="https://ramen-app-main.herokuapp.com/member/posts/35" target="_blank">投稿ページへ</a></div>'
+  },{
+    title: 'つけ麺tetsu',
+    lat: 35.651905,
+    lng: 139.545144,
+    content: 'つけ麺tetsu<br><img src="https://image-ramen-app-main.s3-ap-northeast-1.amazonaws.com/uploads/member/post/image/58/%E3%81%A4%E3%81%91%E3%82%81%E3%82%93tetsu.png" class="pop_image"><br><div class="test"><a href="https://ramen-app-main.herokuapp.com/member/posts/58" target="_blank">投稿ページへ</a></div>'
+  }];	
+  <% end %>
+
   function initMap() {
     // 緯度経度のデータ作成
     var mapLatLng = new google.maps.LatLng({lat: 35.732981, lng: 139.727423});

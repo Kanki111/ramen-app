@@ -1,4 +1,4 @@
-class Member::MemberController < Member::PostsController
+class Member::MemberController < Member::SessionsController
     def index
         @member = RamenMember.order(:name)
     end
@@ -7,7 +7,7 @@ class Member::MemberController < Member::PostsController
     end
 
     def show
-        @member_post =Member::Post.find(params[:id])
+        @ramen_member = login_member_now
     end
 
     def create
