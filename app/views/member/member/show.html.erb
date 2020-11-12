@@ -6,6 +6,14 @@
 <div id="map_canvas"></div>
 
 <script>
+<% @member_posts.each do |member_post| %>
+    <td class="image"><%= image_tag member_post.image.to_s %></td>
+    <td><%= member_post.title %></td>
+    <td><%= member_post.place %></td>
+    <td><%= member_post.latitude %></td>
+    <td><%= link_to '詳細', member_post %></td>
+    <td><%= link_to '編集', edit_member_post_path(member_post) %></td>
+    <td><%= link_to '削除', member_post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 var map;
 var marker = [];
 var infoWindow = [];
@@ -196,7 +204,6 @@ var markerData = [ {
     lng: 139.545144,
     content: 'つけ麺tetsu<br><img src="https://image-ramen-app-main.s3-ap-northeast-1.amazonaws.com/uploads/member/post/image/58/%E3%81%A4%E3%81%91%E3%82%81%E3%82%93tetsu.png" class="pop_image"><br><div class="test"><a href="https://ramen-app-main.herokuapp.com/member/posts/58" target="_blank">投稿ページへ</a></div>'
   }];	
-  <% end %>
 
   function initMap() {
     // 緯度経度のデータ作成
