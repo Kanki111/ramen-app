@@ -45,15 +45,6 @@
     <%= form.rich_text_area :content %>
   </div>
 
-  <div class="field">
-    <%= form.label :mapの追加, class: "form_content_label" %>
-
-    <div id="floating-panel">
-    <input id="latlng" type="textbox" value="37.09024, -95.712891">
-    <input id="submit" type="button" value="Reverse Geocode">
-</div>
-  </div>
-
   <div class="actions">
     <%= form.submit :投稿をする, class: "new_post_button" %>
   </div>
