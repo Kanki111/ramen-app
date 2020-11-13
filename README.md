@@ -19,7 +19,8 @@
 
 テストログインはこちらという部分をクリックして頂けるとテストログインが行えます。 また、  
 Enter your email...という部分に guest@gmail.com  
-Enter your password...という部分に guest と入力頂けるとログインできます。
+Enter your password...という部分に guest  
+と入力頂けるとログインできます。
 
 # 動作確認済みのOS
 
